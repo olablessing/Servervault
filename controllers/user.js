@@ -35,7 +35,6 @@ export const signup = async (req, res) => {
 
     email,
     password,
-    confirmPassword,
   } = req.body;
   console.log(req.body);
   try {
@@ -45,14 +44,13 @@ export const signup = async (req, res) => {
         return res.send({ message: "User already exist." });
       }
 
-      if (password !== confirmPassword) {
+      if (password !== password) {
         return res.send({ message: "passwords dont match" });
       }
       const hashedPassword = await bcrypt.hash(password, 12);
 
       const result = await User.create({
         email,
-        telegramusername,
         password: hashedPassword,
         username: username,
       });
