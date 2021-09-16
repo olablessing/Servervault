@@ -31,9 +31,8 @@ export const signin = async (req, res) => {
 
 export const signup = async (req, res) => {
   const {
-    firstName,
-    lastName,
-    telegramusername,
+    username,
+
     email,
     password,
     confirmPassword,
@@ -55,7 +54,7 @@ export const signup = async (req, res) => {
         email,
         telegramusername,
         password: hashedPassword,
-        name: `${firstName} ${lastName}`,
+        username: username,
       });
 
       // const tgNames = await Usernames.create({
